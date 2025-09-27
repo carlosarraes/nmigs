@@ -153,7 +153,6 @@ require("mini.ai").setup()
 require("mini.diff").setup()
 require("mini.pairs").setup()
 require("mini.icons").setup()
-require("mini.notify").setup()
 require("mini.surround").setup()
 require("mini.jump").setup({
 	mappings = {

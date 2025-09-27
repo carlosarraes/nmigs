@@ -22,6 +22,7 @@ bind("n", "<leader>sx", ":close<CR>", opts) -- close current split window
 -- Buffer management
 bind("n", "<tab>", ":bnext<CR>", opts) -- next buffer
 bind("n", "<s-tab>", ":bprev<CR>", opts) -- previous buffer
+bind("n", "<leader>x", ":bd<CR>", opts) -- close current buffer
 
 -- Tabs
 bind("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
