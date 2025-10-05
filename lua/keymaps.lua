@@ -79,7 +79,7 @@ bind("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- Hover to se
 bind("n", "gi", function()
 	vim.lsp.buf.implementation({ border = "single" })
 end, opts)
-bind("n", "gr", vim.lsp.buf.references, opts)
+bind("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<cr>", opts)
 bind("n", "<C-n>", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end, opts)
