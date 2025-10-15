@@ -7,7 +7,8 @@ vim.pack.add({
 	{ src = "https://github.com/folke/tokyonight.nvim" },
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/folke/noice.nvim" },
-	{ src = "https://github.com/zbirenbaum/copilot.lua" },
+	-- { src = "https://github.com/zbirenbaum/copilot.lua" },
+	{ src = "https://github.com/supermaven-inc/supermaven-nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/mfussenegger/nvim-lint" },
@@ -89,47 +90,65 @@ require("noice").setup({
 })
 
 -- Copilot
-require("copilot").setup({
-	panel = {
-		enabled = true,
-		auto_refresh = false,
-		keymap = {
-			jump_prev = "[[",
-			jump_next = "]]",
-			accept = "<CR>",
-			refresh = "gr",
-			open = "<M-4>",
-		},
-		layout = {
-			position = "bottom",
-			ratio = 0.4,
-		},
+-- require("copilot").setup({
+-- 	panel = {
+-- 		enabled = true,
+-- 		auto_refresh = false,
+-- 		keymap = {
+-- 			jump_prev = "[[",
+-- 			jump_next = "]]",
+-- 			accept = "<CR>",
+-- 			refresh = "gr",
+-- 			open = "<M-4>",
+-- 		},
+-- 		layout = {
+-- 			position = "bottom",
+-- 			ratio = 0.4,
+-- 		},
+-- 	},
+-- 	suggestion = {
+-- 		enabled = true,
+-- 		auto_trigger = true,
+-- 		debounce = 75,
+-- 		keymap = {
+-- 			accept = "<C-s>",
+-- 			accept_word = false,
+-- 			accept_line = false,
+-- 			next = "<C-e>",
+-- 			prev = "<C-q>",
+-- 			dismiss = "<C-]>",
+-- 		},
+-- 	},
+-- 	filetypes = {
+-- 		markdown = true,
+-- 		help = false,
+-- 		gitcommit = false,
+-- 		gitrebase = false,
+-- 		hgcommit = false,
+-- 		svn = false,
+-- 		cvs = false,
+-- 		["."] = false,
+-- 	},
+-- 	copilot_node_command = "node",
+-- 	server_opts_overrides = {},
+-- })
+-- Supermaven
+require("supermaven-nvim").setup({
+	keymaps = {
+		accept_suggestion = "<C-s>",
+		clear_suggestion = "<C-]>",
+		accept_word = "<C-w>",
 	},
-	suggestion = {
-		enabled = true,
-		auto_trigger = true,
-		debounce = 75,
-		keymap = {
-			accept = "<C-s>",
-			accept_word = false,
-			accept_line = false,
-			next = "<C-e>",
-			prev = "<C-q>",
-			dismiss = "<C-]>",
-		},
+	color = {
+		suggestion_color = "#ffffff",
+		cterm = 244,
 	},
-	filetypes = {
-		markdown = true,
-		help = false,
-		gitcommit = false,
-		gitrebase = false,
-		hgcommit = false,
-		svn = false,
-		cvs = false,
-		["."] = false,
-	},
-	copilot_node_command = "node",
-	server_opts_overrides = {},
+	log_level = "info", -- set to "off" to disable logging completely
+	disable_inline_completion = false, -- disables inline completion for use with cmp
+	disable_keymaps = false, -- disables built in keymaps for more manual control
+	condition = function()
+		return false
+	end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
 })
 
 -- Gitsigns
